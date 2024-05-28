@@ -1,5 +1,6 @@
-package com.klug.tp3crud.model.entity;
+package com.klug.tp3crud.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import jakarta.persistence.*;
 
@@ -11,21 +12,22 @@ import java.util.Date;
 @Builder
 @Entity
 @Table(name = "pedidos")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Date dataPedido;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "cliente_id", nullable = false)
     private Cliente cliente;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "fornecedor_id", nullable = false)
     private Fornecedor fornecedor;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "produto_id", nullable = false)
     private Produto produto;
 }

@@ -1,4 +1,4 @@
-package com.klug.tp3crud.model.entity;
+package com.klug.tp3crud.domain.model;
 
 import lombok.*;
 import jakarta.persistence.*;
